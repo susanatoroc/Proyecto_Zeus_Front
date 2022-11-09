@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren:() => import("./modulos/login/login.module").then(x => x.LoginModule)
   },
   {
+    path: "cliente",
+    loadChildren:() => import("./modulos/cliente/cliente.module").then(x => x.ClienteModule)
+  },
+  {
     path: "**",
     component: ErrorComponent
   }

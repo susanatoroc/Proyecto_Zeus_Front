@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path:"iniciar-sesion",
     component: IdentificacionComponent
+  },
+  {
+    path:"",
+    component: IdentificacionComponent
   }
 ];
 
