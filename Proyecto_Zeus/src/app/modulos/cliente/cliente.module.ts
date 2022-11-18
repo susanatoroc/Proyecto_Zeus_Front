@@ -6,6 +6,7 @@ import { CrearComponent } from './crear/crear.component';
 import { EditarComponent } from './editar/editar.component';
 import { EliminarComponent } from './eliminar/eliminar.component';
 import { VisualizarComponent } from './visualizar/visualizar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { VisualizarComponent } from './visualizar/visualizar.component';
   ],
   imports: [
     CommonModule,
-    ClienteRoutingModule
+    ClienteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ClienteModule { }

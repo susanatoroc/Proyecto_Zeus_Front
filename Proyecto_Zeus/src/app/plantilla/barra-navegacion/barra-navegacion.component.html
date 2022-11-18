@@ -7,9 +7,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="login">Clientes</a></li>
-              <li class="nav-item"><a class="nav-link" href="#projects">Empleados</a></li>
-              <li class="nav-item"><a class="nav-link" href="#signup">Contactenos</a></li>
+              <li *ngIf="setInicioSesion" class="nav-item"><a class="nav-link" href="cliente/visualizar-cliente">Informacion</a></li>
+              <li *ngIf="setInicioSesion" class="nav-item"><a class="nav-link" href="#projects">Editar perfil</a></li>
+              <li *ngIf="setInicioSesion" class="nav-item"><a class="nav-link" href="#signup">Eliminar perfil</a></li>
+              <li *ngIf="!setInicioSesion" class="nav-item"><a class="nav-link" href="login">Login</a></li>
           </ul>
       </div>
   </div>
