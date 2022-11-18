@@ -57,9 +57,12 @@ export class EditarComponent implements OnInit {
     let datosSessionCliente = this.servicioCliente.obtenerInformacionSesion();
     let idSession = datosSession['datos']['id'];
 
+    let fecha = new Date(this.validaciones.controls['fechaNacimiento'].value);
+    console.log(fecha);
+
     let modeloCliente: ClienteModel = {
       nombre : this.validaciones.controls['nombre'].value,
-      fechaNacimiento : this.validaciones.controls['fechaNacimiento'].value.parse,
+      fechaNacimiento : fecha,
       telefono  : this.validaciones.controls['telefono'].value,
       username : this.validaciones.controls['username'].value
     };
