@@ -4,6 +4,7 @@ import { ClientesService } from 'src/app/servicios/clientes.service';
 import { DatePipe } from '@angular/common';
 import { ClienteModel } from 'src/app/modelos/cliente.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar',
@@ -29,7 +30,8 @@ export class EditarComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     public servicioCliente: ClientesService,
-    public servicioAutenticacion: AutenticacionService){
+    public servicioAutenticacion: AutenticacionService,
+    private router: Router){
 
       this.visualizarCliente();
     }
@@ -58,8 +60,6 @@ export class EditarComponent implements OnInit {
     let idSession = datosSession['datos']['id'];
 
     let fecha = new Date(this.validaciones.controls['fechaNacimiento'].value);
-    console.log(fecha);
-
     let modeloCliente: ClienteModel = {
       nombre : this.validaciones.controls['nombre'].value,
       fechaNacimiento : fecha,
@@ -70,6 +70,8 @@ export class EditarComponent implements OnInit {
     
     this.servicioCliente.putDatosCliente(idSession, modeloCliente).subscribe((datos:any)=>{
       console.log("Realizo el put!");
+      this.servicioCliente.refrescarDatosEnSesion(modeloCliente);
+      this.router.navigate(['cliente/visualizar-cliente']);
    },(error:any)=> {
       console.log("Error en el envio de informacion");
    });

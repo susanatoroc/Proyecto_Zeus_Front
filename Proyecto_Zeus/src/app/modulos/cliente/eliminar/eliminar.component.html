@@ -10,8 +10,6 @@
                   <thead>
                     <tr>
                       <th scope="col">NOMBRE</th>
-                      <th scope="col">APELLIDO</th>
-                      <th scope="col">CORREO</th>
                       <th scope="col">FECHA DE NACIMIENTO</th>
                       <th scope="col">TELEFONO</th>
                       <th scope="col">USERNAME</th>
@@ -19,12 +17,10 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row" style="color: #666666;">Nombre Prueba</th>
-                      <td>Apellido Prueba</td>
-                      <td>tnixon12@example.com</td>
-                      <td>01/12/1994</td>
-                      <td>321344533</td>
-                      <td>nombre.prueba</td>
+                      <th scope="row" style="color: #666666;">{{nombreCliente}}</th>
+                      <td>{{fechaNacimiento}}</td>
+                      <td>{{telefono}}</td>
+                      <td>{{username}}</td>
                     </tr>
                    
                   </tbody>
@@ -33,9 +29,11 @@
              <br>
              <div><b>Esta seguro de eliminar su perfil?</b></div>
              <br>
-             <button type="button" class="btn btn-primary btn-lg">Si</button>
-             
-             <button type="button" class="btn btn-secondary btn-lg">Cancelar</button>        
+             <form (ngSubmit)="eliminarCliente()">
+              <button type="submit" class="btn btn-primary btn-lg">Si</button>
+              
+              <button type="button" class="btn btn-secondary btn-lg"><a href="cliente/visualizar-cliente">Cancelar</a></button>   
+            </form>     
             </div>
           </div>
         </div>

@@ -30,7 +30,6 @@ export class ClientesService {
   }
 
   putDatosCliente(id: string, clienteModel: ClienteModel):Observable<HttpResponse<ClienteModel>>{
-    console.log(clienteModel.fechaNacimiento);
     
     return this.http.put<ClienteModel>(  
     this.endPoint + '/clientes/'+ id,  
@@ -42,7 +41,28 @@ export class ClientesService {
     }, 
     { observe: 'response'});
   }
-  
+
+  crearCliente(clienteModel: ClienteModel):Observable<HttpResponse<ClienteModel>>{
+    console.log(clienteModel.fechaNacimiento);
+    
+    return this.http.post<ClienteModel>(  
+    this.endPoint + '/clientes/',  
+    {
+      "Nombre":clienteModel.nombre,
+      "Fecha_nacimiento":clienteModel.fechaNacimiento,
+      "telefono":clienteModel.telefono,
+      "username":clienteModel.username
+    }, 
+    { observe: 'response'});
+  }
+
+  eliminarCliente(id: string):Observable<HttpResponse<ClienteModel>>{
+    
+    return this.http.delete<ClienteModel>(  
+    this.endPoint + '/clientes/' + id, 
+    { observe: 'response'});
+  }
+
   almacenarInformacionCliente(datos:ClienteModel){
  //   datos.estaIdentificado = true;
     let jsonData = JSON.stringify(datos);

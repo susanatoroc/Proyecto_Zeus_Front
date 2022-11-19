@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AutenticateModel } from 'src/app/modelos/autenticate.model';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 var CryptoJS = require("crypto-js");
@@ -18,7 +19,8 @@ export class IdentificacionComponent implements OnInit {
   })
 
   constructor(private fb: FormBuilder, 
-    public servicioAutenticacion: AutenticacionService){}
+    public servicioAutenticacion: AutenticacionService,
+    private router: Router){}
 
   ngOnInit(): void {
   }
@@ -34,6 +36,7 @@ export class IdentificacionComponent implements OnInit {
       console.log("La respuesta es satisfactoria");
       this.servicioAutenticacion.almacenarInformacionSesion(datos);
       this.setDatosIncorrectos = false;
+      this.router.navigate(['cliente/visualizar-cliente']);
 
    },(error:any)=> {
       console.log("Error en el envio de informacion");

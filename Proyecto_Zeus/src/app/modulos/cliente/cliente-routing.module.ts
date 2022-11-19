@@ -27,11 +27,13 @@ const routes: Routes = [
     component: VisualizarComponent
   }
 
-
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ClienteRoutingModule { }
+export class ClienteRoutingModule { 
+  
+}
