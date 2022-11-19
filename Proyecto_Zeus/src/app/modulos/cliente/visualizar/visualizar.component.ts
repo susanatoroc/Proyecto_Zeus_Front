@@ -29,8 +29,9 @@ export class VisualizarComponent implements OnInit {
     console.log("Ingresa a visualizar cliente");
     let datosSession = this.servicioAutenticacion.obtenerInformacionSesion();
     let id = datosSession['datos']['id'];
+    let tk = datosSession['tk'];
 
-    this.servicioCliente.getDatosCliente(id).subscribe((datos:any)=>{
+    this.servicioCliente.getDatosCliente(id,tk).subscribe((datos:any)=>{
       console.log("La respuesta es satisfactoria");
       this.servicioCliente.almacenarInformacionCliente(datos);
       this.nombreCliente = datos['body']['Nombre'];

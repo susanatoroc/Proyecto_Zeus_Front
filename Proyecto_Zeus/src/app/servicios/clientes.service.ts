@@ -22,11 +22,17 @@ export class ClientesService {
    * @returns 
    */
 
-  getDatosCliente(id: string):Observable<HttpResponse<ClienteModel>>{
+  getDatosCliente(id: string, tk:string):Observable<HttpResponse<ClienteModel>>{
+
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer '+ tk,
+    });
 
     return this.http.get<ClienteModel>(    
     this.endPoint + '/clientes/'+ id,
-    { observe: 'response'});
+    {headers:header,
+     observe: 'response'});
   }
 
   putDatosCliente(id: string, clienteModel: ClienteModel):Observable<HttpResponse<ClienteModel>>{
